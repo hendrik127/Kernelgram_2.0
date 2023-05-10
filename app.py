@@ -2,7 +2,7 @@ import sys
 import os
 import tempfile
 import numpy as np
-from filters import *
+from filters2 import *
 from numpy.random import multinomial
 import cv2
 from scipy.interpolate import UnivariateSpline
@@ -151,7 +151,10 @@ class KernelGram(QWidget):
 
         self.choice = QComboBox()
 
-        for f in ['', 'Seepia', 'Roosa', 'Soe', 'Külm', 'Udune', 'Vapourwave', 'Servad', 'Must-valge', 'Peegelpilt', 'Suvaline', 'Tekstituvastus']:
+        for f in ['', 'Seepia', 'Roosa', 'Soe', 'Külm', 'Udune', 'Vapourwave', 'Servad', 'Must-valge',
+                   'Peegelpilt', 'Suvaline', 'Tekstituvastus','Näotuvastus','Clarendon','Gingham',
+                   'Juno','Lark','Mayfair','Sierra','Valencia'
+                   ]:
             self.choice.addItem(f)
 
         self.choice.currentIndexChanged.connect(self.on_click)
@@ -216,7 +219,7 @@ class KernelGram(QWidget):
         img = cv2.imread(self.photoViewer.path)
 
         if selected_filter == 'Seepia':
-            img = sepia_transorm(img)
+            img = sepia_transform(img)
         elif selected_filter == 'Roosa':
             img = pink_transform(img)
         elif selected_filter == 'Udune':
@@ -240,6 +243,23 @@ class KernelGram(QWidget):
             img = warming_transform(img)
         elif selected_filter == 'Külm':
             img = cooling_transform(img)
+        elif selected_filter == 'Näotuvastus':
+            img = detect_faces(img)
+        elif selected_filter == 'Clarendon':
+            img = clarendon_filter(img)
+        elif selected_filter == 'Gingham':
+            img = gingham_filter(img)
+        elif selected_filter == 'Juno':
+            img = juno_filter(img)
+        elif selected_filter == 'Lark':
+            img = lark_filter(img)
+        elif selected_filter == 'Mayfair':
+            img = mayfair_filter(img)
+        elif selected_filter == 'Sierra':
+            img = sierra_filter(img)
+        elif selected_filter == 'Valencia':
+            img = valencia_filter(img)
+        
         else:
             return
 
