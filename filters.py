@@ -183,20 +183,6 @@ def gaussian_blur_transform(img):
     bump /= np.trapz(bump)
 
     kernel = bump[:, np.newaxis] * bump[np.newaxis, :]
-    # kernel = np.matrix(kernel)
-
-    '''
-    # cursed
-    kernel = np.matrix([
-        [1, 0, -1],
-        [0, 0, 0],
-        [-1, 0, 1]
-    ])
-
-
-    # vapourwave
-    
-    '''
 
     # muudab pildi andmed ujuvkoma arvudeks, et teisendused täpsed oleksid
     img = np.array(img, dtype=np.float64)
