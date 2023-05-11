@@ -7,7 +7,6 @@ Kernelgram 2.0 is an image processing application that provides various filters 
 The project has the following structure:
 
 - `app.py`: The main application file.
-- `filters.py`: Contains the initial image filter functions.
 - `filters2.py`: Contains the updated image filter functions.
 - `haarcascade_frontalface_default.xml`: Haar cascade file for face detection.
 - `models`: Directory containing pre-trained models.
