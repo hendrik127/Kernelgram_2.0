@@ -1,12 +1,11 @@
 # Kernelgram 2.0
 
-Kernelgram 2.0 is an image processing application that provides various filters and features for image manipulation. It is built using OpenCV and Python.
+Kernelgram 2.0 is an image processing application that provides various filters and features for image manipulation. It is built using OpenCV and Python. It also uses a pretrained YOLOv3 model for image detection (COCO).
 
 ## Project Structure
 
 The project has the following structure:
 
-- `README.md`: Project documentation.
 - `app.py`: The main application file.
 - `filters.py`: Contains the initial image filter functions.
 - `filters2.py`: Contains the updated image filter functions.
@@ -26,11 +25,10 @@ To use Kernelgram 2.0, follow these steps:
 3. Use the provided filters and features to manipulate images.
 4. Close the application when finished.
 
-Feel free to explore and modify the code in `filters.py` and `filters2.py` to add or enhance image processing capabilities.
 
 ## Notes
 
 - Make sure the pre-trained model files (`yolov3.cfg`, `yolov3.txt`, and `yolov3.weights`) are present in the `models` directory before running the application.
 
-Enjoy using Kernelgram 2.0 for your image processing needs!
+Enjoy using Kernelgram 2.0!
 
