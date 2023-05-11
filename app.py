@@ -27,7 +27,7 @@ class ImageLabel(QLabel):
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setStyleSheet('''
             QLabel{
-                border: 2px dashed #aaa
+                border: 2px solid #aaa
             }
         ''')
 
@@ -153,7 +153,7 @@ class KernelGram(QWidget):
 
         for f in ['', 'Seepia', 'Roosa', 'Soe', 'Külm', 'Udune', 'Vapourwave', 'Servad', 'Must-valge',
                    'Peegelpilt', 'Suvaline', 'Tekstituvastus','Näotuvastus','Clarendon','Gingham',
-                   'Juno','Lark','Mayfair','Sierra','Valencia'
+                   'Juno','Lark','Mayfair','Sierra','Valencia','Objektituvastus'
                    ]:
             self.choice.addItem(f)
 
@@ -259,6 +259,8 @@ class KernelGram(QWidget):
             img = sierra_filter(img)
         elif selected_filter == 'Valencia':
             img = valencia_filter(img)
+        elif selected_filter == 'Objektituvastus':
+            img = object_detection(img)
         
         else:
             return
