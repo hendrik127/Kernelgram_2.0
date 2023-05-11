@@ -28,6 +28,39 @@ To use Kernelgram 2.0, follow these steps:
 
 ## Notes
 - This app was updated for python 3.11.
+- Pictures get saved in your homedir/Pictures/ folder
+  
+## Troubleshooting
+
+Some info that may help in troubleshooting.
+# Tesseract OCR
+
+Windows:
+Visit the Tesseract OCR downloads page at https://github.com/UB-Mannheim/tesseract/wiki.
+Download the latest stable version of Tesseract OCR for Windows.
+Run the installer and follow the installation instructions.
+During the installation process, make sure to select the option to add Tesseract to your system's PATH environment variable.
+
+macOS:
+Open Terminal.
+Install Tesseract using Homebrew by running the command: brew install tesseract.
+
+Linux (Ubuntu/Debian):
+Open Terminal.
+Run the following command to install Tesseract: sudo apt-get install tesseract-ocr.
+
+# Qt
+Windows:
+Visit the Qt website (https://www.qt.io/download) and download the Qt 6 installer for Windows.
+Run the downloaded installer and follow the installation wizard.
+During the installation, select the components you want to install. Make sure to include the Qt libraries and development tools.
+Choose the installation path and complete the installation process.
+
+macOS:
+brew install qt@6
+
+Linux:
+sudo apt-get install qt6-default
 
 Enjoy using Kernelgram 2.0!
 

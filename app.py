@@ -1,21 +1,15 @@
 import sys
 import os
 import tempfile
-import numpy as np
 from filters2 import *
-from numpy.random import multinomial
 import cv2
-from scipy.interpolate import UnivariateSpline
 import pytesseract
-# from TextExtractApi.TextExtract import TextExtractFunctions
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QLabel, QVBoxLayout, QPushButton,
     QHBoxLayout, QComboBox, QPlainTextEdit
 )
 from PyQt6.QtCore import Qt, pyqtSlot
 from PyQt6.QtGui import QPixmap
-
-
 
 class ImageLabel(QLabel):
     def __init__(self):
@@ -54,21 +48,7 @@ class ImageLabel(QLabel):
         base = os.path.basename(temporary_path)
         homedir = os.path.expanduser('~')
         new_file_path = os.path.join(homedir, 'Pictures', base)
-        # print(new_file_path)
-        # 
-        # base, ext = os.path.splitext(new_file_path)
-        # count = 1
-        # while os.path.exists(new_file_path):
-        #     new_file_path = f"{base}_{count}{ext}"
         os.rename(temporary_path, new_file_path)
-
-       
-
-        #return new_file_path  
-
-
-
-
 
 class DraggableImageLabel(QLabel):
     def __init__(self):
@@ -170,13 +150,11 @@ class KernelGram(QWidget):
         photo_row.addWidget(self.photoViewer2)
 
         save_button = QPushButton()
-        save_button.setText('Salvesta pilt')
+        save_button.setText('Save')
         save_button.clicked.connect(self.save_wrap)
 
-
-       
         refresh_button = QPushButton()
-        refresh_button.setText('Uuenda')
+        refresh_button.setText('Refresh')
         refresh_button.clicked.connect(self.on_click)
 
         filter_row = QHBoxLayout()
@@ -190,22 +168,15 @@ class KernelGram(QWidget):
 
 
         # Text row
-
         self.textbox = QPlainTextEdit()
-        # self.textbox.setMaximumSizeHint(100)
-
         text_row = QHBoxLayout()
-
         text_row.addWidget(self.textbox)
-
         mainLayout.addLayout(photo_row)
         mainLayout.addStretch()
         mainLayout.addLayout(text_row)
 
-        
-
+    
         self.setLayout(mainLayout)
-
         self.setWindowTitle("KernelGram")
 
     @pyqtSlot()
@@ -213,9 +184,7 @@ class KernelGram(QWidget):
         if self.photoViewer.path == '':
             return
 
-        # vastavalt comboboxi valikule kasutab erinevat filtrit
         selected_filter = self.choice.currentText()
-
         img = cv2.imread(self.photoViewer.path)
 
         if selected_filter == 'Seepia':
@@ -265,22 +234,12 @@ class KernelGram(QWidget):
         else:
             return
 
-        # salvestame pildi ja näitame seda aknas
         self.temporary_path = self.photoViewer.set_temporary_image(self.photoViewer.path, img, selected_filter)
         self.photoViewer2.set_image(self.temporary_path)
 
     def save_wrap(self):
-
         if os.path.exists(self.temporary_path):
-            #print(self.temporary_path)
             self.photoViewer2.save_image(self.temporary_path)
-        else:
-            print("Error", "Temporary file does not exist")
-    
-    
-    
-   
-
 
 app = QApplication(sys.argv)
 gram = KernelGram()

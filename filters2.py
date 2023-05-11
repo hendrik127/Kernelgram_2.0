@@ -61,10 +61,7 @@ def warming_transform(img):
 
 def random_transform(img):
 
-    # genereerib kaheksa suvalist arvu, millest pooled on positiivsed ja pooled negatiivsed.
-    # ühe summa on 1, teisel -1 ehk kokku annavad 0
-    # lisame need ühte arraysse, segame selle suvaliselt ära ja siis paigutame kernelisse
-
+    #Randomized kernel.
     random_pos = np.array(multinomial(100, [1/4.] * 4)/100)
     random_neg = np.array(multinomial(100, [1/4.] * 4)/(-100))
     random = np.append(random_pos, random_neg)
@@ -76,13 +73,11 @@ def random_transform(img):
         random[5:]
     ])
 
-    # muudab pildi andmed ujuvkoma arvudeks, et teisendused täpsed oleksid
     img = np.array(img, dtype=np.float64)
 
-    # rakendame filtrit
     img = cv2.transform(img, kernel)
 
-    # normaliseerime väärtused ja teisendame täisarvudeks tagasi
+    # Normalize
     img[np.where(img > 255)] = 255
     img = np.array(img, dtype=np.uint8)
 
@@ -370,7 +365,7 @@ def get_output_layers(net):
 
     return output_layers
 
-def draw_prediction(img, class_id, confidence, x, y, x_plus_w, y_plus_h,classes,COLORS):
+def draw_prediction(img, class_id, x, y, x_plus_w, y_plus_h,classes,COLORS):
 
     label = str(classes[class_id])
 
@@ -439,7 +434,7 @@ def object_detection(img):
         y = box[1]
         w = box[2]
         h = box[3]
-        draw_prediction(image, class_ids[i], confidences[i], round(x), round(y), round(x+w), round(y+h),classes,COLORS)
+        draw_prediction(image, class_ids[i], round(x), round(y), round(x+w), round(y+h),classes,COLORS)
 
     return img
 
