@@ -21,7 +21,7 @@ To use Kernelgram 2.0, follow these steps:
 
 1. Install the required dependencies by running `pip3 install -r requirements.txt`.
 2. Download the zipped models folder from [here](https://drive.google.com/file/d/1wTQ_H_fOFhB68GltHcGJL5b1lfwOYmDV/view?usp=share_link).
-3. Add it to the project directory.
+3. Unzip and add it to the project directory.
 4. Run the `app.py` script to launch the application.
 5. Have fun!
 
