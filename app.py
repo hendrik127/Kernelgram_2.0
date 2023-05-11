@@ -60,7 +60,7 @@ class DraggableImageLabel(QLabel):
 
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        self.setText('\n\n Vea pilt siia \n\n')
+        self.setText('\n\n Drop your picture \n\n')
         self.setStyleSheet('''
             QLabel{
                 border: 2px dashed #aaa
@@ -126,14 +126,14 @@ class KernelGram(QWidget):
 
         # Filter row
         label = QLabel()
-        label.setText('Vali filter: ')
+        label.setText('Filter: ')
         label.adjustSize()
 
         self.choice = QComboBox()
 
-        for f in ['', 'Seepia', 'Roosa', 'Soe', 'Külm', 'Udune', 'Vapourwave', 'Servad', 'Must-valge',
-                   'Peegelpilt', 'Suvaline', 'Tekstituvastus','Näotuvastus','Clarendon','Gingham',
-                   'Juno','Lark','Mayfair','Sierra','Valencia','Objektituvastus'
+        for f in ['', 'Sepia', 'Pink', 'Warm', 'Cold', 'Blurry', 'Vapourwave', 'Edge Detection', 'Grayscale',
+                   'Mirrored', 'Random', 'Text','Face Recognition','Clarendon','Gingham',
+                   'Juno','Lark','Mayfair','Sierra','Valencia','Object Detection'
                    ]:
             self.choice.addItem(f)
 
@@ -187,32 +187,32 @@ class KernelGram(QWidget):
         selected_filter = self.choice.currentText()
         img = cv2.imread(self.photoViewer.path)
 
-        if selected_filter == 'Seepia':
+        if selected_filter == 'Sepia':
             img = sepia_transform(img)
-        elif selected_filter == 'Roosa':
+        elif selected_filter == 'Pink':
             img = pink_transform(img)
-        elif selected_filter == 'Udune':
+        elif selected_filter == 'Blurry':
             img = gaussian_blur_transform(img)
         elif selected_filter == 'Special':
             img = special_transform(img)
         elif selected_filter == 'Vapourwave':
             img = vapourwave_transform(img)
-        elif selected_filter == 'Servad':
+        elif selected_filter == 'Edge Detection':
             img = edge_detection_transform(img)
-        elif selected_filter == 'Tekstituvastus':
+        elif selected_filter == 'Text':
             self.textbox.setPlainText(pytesseract.image_to_string(
                 cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)))
-        elif selected_filter == 'Must-valge':
+        elif selected_filter == 'Grayscale':
             img = bw_transform(img)
-        elif selected_filter == 'Peegelpilt':
+        elif selected_filter == 'Mirrored':
             img = mirror_transform(img)
-        elif selected_filter == 'Suvaline':
+        elif selected_filter == 'Random':
             img = random_transform(img)
-        elif selected_filter == 'Soe':
+        elif selected_filter == 'Warm':
             img = warming_transform(img)
-        elif selected_filter == 'Külm':
+        elif selected_filter == 'Cold':
             img = cooling_transform(img)
-        elif selected_filter == 'Näotuvastus':
+        elif selected_filter == 'Face recognition':
             img = detect_faces(img)
         elif selected_filter == 'Clarendon':
             img = clarendon_filter(img)
@@ -228,7 +228,7 @@ class KernelGram(QWidget):
             img = sierra_filter(img)
         elif selected_filter == 'Valencia':
             img = valencia_filter(img)
-        elif selected_filter == 'Objektituvastus':
+        elif selected_filter == 'Object Detection':
             img = object_detection(img)
         
         else:
