@@ -22,8 +22,7 @@ To use Kernelgram 2.0, follow these steps:
 
 1. Install the required dependencies by running `pip3 install -r requirements.txt`.
 2. Run the `app.py` script to launch the application.
-3. Use the provided filters and features to manipulate images.
-4. Close the application when finished.
+3. Have fun!
 
 
 ## Notes
