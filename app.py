@@ -212,7 +212,7 @@ class KernelGram(QWidget):
             img = warming_transform(img)
         elif selected_filter == 'Cold':
             img = cooling_transform(img)
-        elif selected_filter == 'Face recognition':
+        elif selected_filter == 'Face Recognition':
             img = detect_faces(img)
         elif selected_filter == 'Clarendon':
             img = clarendon_filter(img)
